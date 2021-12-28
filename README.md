@@ -26,7 +26,7 @@
 
 ## <img width="4%" title="Functional" src="images/logo/functional.png"> Покрытый функционал
 
-> На данный момент разработаны автотесты на <code>UI</code>.
+> Разработаны автотесты на <code>UI</code>.
 
 ### UI
 
