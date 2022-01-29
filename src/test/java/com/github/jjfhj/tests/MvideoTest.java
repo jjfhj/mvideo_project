@@ -1,5 +1,9 @@
 package com.github.jjfhj.tests;
 
+import com.github.jjfhj.JiraIssue;
+import com.github.jjfhj.JiraIssues;
+import com.github.jjfhj.Layer;
+import com.github.jjfhj.Microservice;
 import com.github.jjfhj.helpers.Attach;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
@@ -21,6 +25,10 @@ import static com.github.jjfhj.tests.TestData.MVIDEO_URL;
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+@Layer("web")
+@Owner("kgordienko")
+@Tag("Web")
+@JiraIssues({@JiraIssue("HOMEWORK-282")})
 @DisplayName("Тестирование веб-приложения М.Видео")
 public class MvideoTest extends TestBase {
 
@@ -28,8 +36,8 @@ public class MvideoTest extends TestBase {
             "Ирригатор B.Well WI-912 (5 насадок)"})
     @DisplayName("Результаты поиска")
     @Tags({@Tag("Web"), @Tag("Blocker"), @Tag("High")})
+    @Microservice("Search Results")
     @ParameterizedTest(name = "Отображение товара {0} в результатах поиска")
-    @Owner("Карина Гордиенко (jjfhj)")
     @Feature("Поиск")
     @Story("Страница результатов поиска")
     @Severity(SeverityLevel.BLOCKER)
@@ -51,9 +59,9 @@ public class MvideoTest extends TestBase {
             "Apple Magic Mouse | Беспроводные мыши Apple"
     }, delimiter = '|')
     @DisplayName("Фильтр 'Категория'")
-    @Tags({@Tag("Web"), @Tag("Minor"), @Tag("Low")})
+    @Tags({@Tag("Minor"), @Tag("Low")})
+    @Microservice("Filter Category")
     @ParameterizedTest(name = "Отображение категории {1} в фильтре 'Категория'")
-    @Owner("Карина Гордиенко (jjfhj)")
     @Feature("Фильтры")
     @Story("Блок фильтров")
     @Severity(SeverityLevel.MINOR)
@@ -72,9 +80,9 @@ public class MvideoTest extends TestBase {
 
     @EnumSource(ProfileMenu.class)
     @DisplayName("Пункты меню неавторизованного пользователя")
-    @Tags({@Tag("Web"), @Tag("Blocker"), @Tag("High")})
+    @Tags({@Tag("Blocker"), @Tag("High")})
+    @Microservice("Menu Item")
     @ParameterizedTest(name = "Отображение пункта меню {0}")
-    @Owner("Карина Гордиенко (jjfhj)")
     @Feature("Меню")
     @Story("Панель пунктов меню")
     @Severity(SeverityLevel.BLOCKER)
@@ -90,9 +98,9 @@ public class MvideoTest extends TestBase {
 
     @MethodSource("com.github.jjfhj.tests.ReviewsByCategory#productCategories")
     @DisplayName("Обзор по категориям на основной странице категории товара")
-    @Tags({@Tag("Web"), @Tag("Minor"), @Tag("Low")})
+    @Tags({@Tag("Minor"), @Tag("Low")})
+    @Microservice("Overview By Category")
     @ParameterizedTest(name = "Отображение категорий {1} в обзоре по категориям на странице {0}")
-    @Owner("Карина Гордиенко (jjfhj)")
     @Feature("Категории")
     @Story("Блок обзора по категориям")
     @Severity(SeverityLevel.MINOR)
@@ -114,8 +122,8 @@ public class MvideoTest extends TestBase {
 
     @Test
     @DisplayName("Отсутствие ошибки 'SEVERE' в консоли страницы")
-    @Tags({@Tag("Web"), @Tag("Critical"), @Tag("Highest")})
-    @Owner("Карина Гордиенко (jjfhj)")
+    @Tags({@Tag("Critical"), @Tag("Highest")})
+    @Microservice("Console")
     @Feature("Консоль")
     @Story("Журнал консоли")
     @Severity(SeverityLevel.CRITICAL)
