@@ -124,6 +124,7 @@ public class MvideoTest extends TestBase {
     @DisplayName("Отсутствие ошибки 'SEVERE' в консоли страницы")
     @Tags({@Tag("Critical"), @Tag("Highest")})
     @Microservice("Console")
+    @Owner("vshalunov")
     @Feature("Консоль")
     @Story("Журнал консоли")
     @Severity(SeverityLevel.CRITICAL)
