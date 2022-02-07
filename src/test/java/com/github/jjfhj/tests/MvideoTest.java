@@ -27,7 +27,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @Layer("web")
 @Owner("kgordienko")
-@Tag("Web")
+@Tags({@Tag("Web"), @Tag("UI")})
 @JiraIssues({@JiraIssue("HOMEWORK-282")})
 @DisplayName("Тестирование веб-приложения М.Видео")
 public class MvideoTest extends TestBase {
@@ -35,7 +35,7 @@ public class MvideoTest extends TestBase {
     @ValueSource(strings = {"Ирригатор B.Well WI-911 150мл (2 насадки)",
             "Ирригатор B.Well WI-912 (5 насадок)"})
     @DisplayName("Результаты поиска")
-    @Tags({@Tag("Web"), @Tag("Blocker"), @Tag("High")})
+    @Tags({@Tag("Blocker"), @Tag("High")})
     @Microservice("Search Results")
     @ParameterizedTest(name = "Отображение товара {0} в результатах поиска")
     @Feature("Поиск")
