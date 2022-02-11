@@ -22,6 +22,7 @@ import static com.codeborne.selenide.CollectionCondition.texts;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 import static com.github.jjfhj.config.WebDriverUtil.APP_CONFIG;
+import static com.github.jjfhj.tests.TestData.email;
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -138,6 +139,32 @@ public class MvideoTest extends TestBase {
             String errorText = "SEVERE";
 
             assertThat(consoleLogs).doesNotContain(errorText);
+        });
+    }
+
+    @Test
+    @DisplayName("Email-подписка на получение предложений")
+    @Tags({@Tag("Minor"), @Tag("Medium")})
+    @Microservice("Email")
+    @Feature("Email")
+    @Story("Email-подписки")
+    @Severity(SeverityLevel.MINOR)
+    @Link(name = "М.Видео", url = "https://www.mvideo.ru/")
+    void emailSubscriptionToReceiveOffersTest() {
+        step("Открыть главную страницу М.Видео", () -> {
+            open(APP_CONFIG.appURL());
+        });
+        step("Проскроллить страницу до футера", () -> {
+            $(".layout__footer .ng-star-inserted").scrollTo();
+        });
+        step("В поле блока 'Получайте самые интересные предложения первыми!' ввести валидный email", () -> {
+            $("#mvideo-form-field-input-0").setValue(email);
+        });
+        step("Нажать на значок 'стрелка' (→)", () -> {
+            $(".email-icon-wrap").click();
+        });
+        step("Проверить отображение сообщения об успешной отправке данных", () -> {
+            $(".footer__subscribe-success-text").shouldHave(text("Данные успешно отправлены. Спасибо!"));
         });
     }
 }
