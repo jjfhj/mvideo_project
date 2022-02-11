@@ -9,17 +9,18 @@ import static java.lang.String.format;
 
 public class WebDriverUtil {
 
-    private static final WebDriverConfig config = ConfigFactory.create(WebDriverConfig.class, System.getProperties());
-    private static CredentialsConfig credentials = ConfigFactory.create(CredentialsConfig.class);
-    private static String login = credentials.login();
-    private static String password = credentials.password();
-    private static String selenoidURL = System.getProperty("remoteURL");
-    private static String remoteURL = format("https://%s:%s@%s", login, password, selenoidURL);
+    private static final WebDriverConfig WEB_DRIVER_CONFIG = ConfigFactory.create(WebDriverConfig.class, System.getProperties());
+    private static final CredentialsConfig CREDENTIALS_CONFIG = ConfigFactory.create(CredentialsConfig.class, System.getProperties());
+    public static final AppConfig APP_CONFIG = ConfigFactory.create(AppConfig.class, System.getProperties());
+    private static final String LOGIN = CREDENTIALS_CONFIG.login();
+    private static final String PASSWORD = CREDENTIALS_CONFIG.password();
+    private static final String SELENOID_URL = System.getProperty("remoteURL");
+    private static final String REMOTE_URL = format("https://%s:%s@%s", LOGIN, PASSWORD, SELENOID_URL);
 
     public static void configure() {
-        Configuration.browser = config.browser();
-        Configuration.browserVersion = config.versionBrowser();
-        Configuration.browserSize = config.browserSize();
+        Configuration.browser = WEB_DRIVER_CONFIG.browser();
+        Configuration.browserVersion = WEB_DRIVER_CONFIG.versionBrowser();
+        Configuration.browserSize = WEB_DRIVER_CONFIG.browserSize();
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         ChromeOptions chromeOptions = new ChromeOptions();
@@ -34,7 +35,7 @@ public class WebDriverUtil {
         if (!System.getProperty("remoteURL").equals("")) {
             capabilities.setCapability("enableVNC", true);
             capabilities.setCapability("enableVideo", true);
-            Configuration.remote = remoteURL;
+            Configuration.remote = REMOTE_URL;
             // Configuration.remote = selenoidURL;
         }
 

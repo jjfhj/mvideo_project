@@ -21,7 +21,7 @@ import java.util.List;
 import static com.codeborne.selenide.CollectionCondition.texts;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
-import static com.github.jjfhj.tests.TestData.MVIDEO_URL;
+import static com.github.jjfhj.config.WebDriverUtil.APP_CONFIG;
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -44,7 +44,7 @@ public class MvideoTest extends TestBase {
     @Link(name = "М.Видео", url = "https://www.mvideo.ru/")
     void searchResultsTest(String searchQuery) {
         step("Открыть главную страницу М.Видео", () -> {
-            open(MVIDEO_URL);
+            open(APP_CONFIG.appURL());
         });
         step("Найти ирригаторы торговой марки B.Well", () -> {
             $(".input__field").setValue("Ирригатор B.Well").pressEnter();
@@ -68,7 +68,7 @@ public class MvideoTest extends TestBase {
     @Link(name = "М.Видео", url = "https://www.mvideo.ru/")
     void filterCategoryTest(String searchQuery, String categoryName) {
         step("Открыть главную страницу М.Видео", () -> {
-            open(MVIDEO_URL);
+            open(APP_CONFIG.appURL());
         });
         step("Найти товар " + searchQuery, () -> {
             $(".input__field").setValue(searchQuery).pressEnter();
@@ -89,7 +89,7 @@ public class MvideoTest extends TestBase {
     @Link(name = "М.Видео", url = "https://www.mvideo.ru/")
     void displayOfAnonymousMenuItemTest(ProfileMenu profileMenu) {
         step("Открыть главную страницу М.Видео", () -> {
-            open(MVIDEO_URL);
+            open(APP_CONFIG.appURL());
         });
         step("Найти отображение пункта меню " + profileMenu + " в навигационной панели", () -> {
             $(".nav-tabs").shouldHave(text(profileMenu.getProfileMenu()));
@@ -107,7 +107,7 @@ public class MvideoTest extends TestBase {
     @Link(name = "М.Видео", url = "https://www.mvideo.ru/")
     void displayOfTheOverviewByCategoryTest(String reviewsByCategory, List<String> productCategories) {
         step("Открыть главную страницу М.Видео", () -> {
-            open(MVIDEO_URL);
+            open(APP_CONFIG.appURL());
         });
         step("Открыть каталог товаров", () -> {
             $("[class='button button--with-icon ng-star-inserted']").click();
@@ -124,14 +124,14 @@ public class MvideoTest extends TestBase {
     @DisplayName("Отсутствие ошибки 'SEVERE' в консоли страницы")
     @Tags({@Tag("Critical"), @Tag("Highest")})
     @Microservice("Console")
-    @Owner("vshalunov")
+    @Owner("user")
     @Feature("Консоль")
     @Story("Журнал консоли")
     @Severity(SeverityLevel.CRITICAL)
     @Link(name = "М.Видео", url = "https://www.mvideo.ru/")
     void consoleShouldNotHaveErrorsTest() {
         step("Открыть главную страницу М.Видео", () -> {
-            open(MVIDEO_URL);
+            open(APP_CONFIG.appURL());
         });
         step("Проверить отсутствие текста 'SEVERE' в консоли", () -> {
             String consoleLogs = Attach.browserConsoleLogs();
