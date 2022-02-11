@@ -21,8 +21,9 @@ import java.util.List;
 import static com.codeborne.selenide.CollectionCondition.texts;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
-import static com.github.jjfhj.config.WebDriverUtil.APP_CONFIG;
+import static com.github.jjfhj.config.WebDriverUtil.APP_URL;
 import static com.github.jjfhj.tests.TestData.email;
+import static com.github.jjfhj.tests.TestData.successMessage;
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -45,7 +46,7 @@ public class MvideoTest extends TestBase {
     @Link(name = "М.Видео", url = "https://www.mvideo.ru/")
     void searchResultsTest(String searchQuery) {
         step("Открыть главную страницу М.Видео", () -> {
-            open(APP_CONFIG.appURL());
+            open(APP_URL);
         });
         step("Найти ирригаторы торговой марки B.Well", () -> {
             $(".input__field").setValue("Ирригатор B.Well").pressEnter();
@@ -69,7 +70,7 @@ public class MvideoTest extends TestBase {
     @Link(name = "М.Видео", url = "https://www.mvideo.ru/")
     void filterCategoryTest(String searchQuery, String categoryName) {
         step("Открыть главную страницу М.Видео", () -> {
-            open(APP_CONFIG.appURL());
+            open(APP_URL);
         });
         step("Найти товар " + searchQuery, () -> {
             $(".input__field").setValue(searchQuery).pressEnter();
@@ -90,7 +91,7 @@ public class MvideoTest extends TestBase {
     @Link(name = "М.Видео", url = "https://www.mvideo.ru/")
     void displayOfAnonymousMenuItemTest(ProfileMenu profileMenu) {
         step("Открыть главную страницу М.Видео", () -> {
-            open(APP_CONFIG.appURL());
+            open(APP_URL);
         });
         step("Найти отображение пункта меню " + profileMenu + " в навигационной панели", () -> {
             $(".nav-tabs").shouldHave(text(profileMenu.getProfileMenu()));
@@ -108,7 +109,7 @@ public class MvideoTest extends TestBase {
     @Link(name = "М.Видео", url = "https://www.mvideo.ru/")
     void displayOfTheOverviewByCategoryTest(String reviewsByCategory, List<String> productCategories) {
         step("Открыть главную страницу М.Видео", () -> {
-            open(APP_CONFIG.appURL());
+            open(APP_URL);
         });
         step("Открыть каталог товаров", () -> {
             $("[class='button button--with-icon ng-star-inserted']").click();
@@ -132,7 +133,7 @@ public class MvideoTest extends TestBase {
     @Link(name = "М.Видео", url = "https://www.mvideo.ru/")
     void consoleShouldNotHaveErrorsTest() {
         step("Открыть главную страницу М.Видео", () -> {
-            open(APP_CONFIG.appURL());
+            open(APP_URL);
         });
         step("Проверить отсутствие текста 'SEVERE' в консоли", () -> {
             String consoleLogs = Attach.browserConsoleLogs();
@@ -152,7 +153,7 @@ public class MvideoTest extends TestBase {
     @Link(name = "М.Видео", url = "https://www.mvideo.ru/")
     void emailSubscriptionToReceiveOffersTest() {
         step("Открыть главную страницу М.Видео", () -> {
-            open(APP_CONFIG.appURL());
+            open(APP_URL);
         });
         step("Проскроллить страницу до футера", () -> {
             $(".layout__footer .ng-star-inserted").scrollTo();
@@ -164,7 +165,7 @@ public class MvideoTest extends TestBase {
             $(".email-icon-wrap").click();
         });
         step("Проверить отображение сообщения об успешной отправке данных", () -> {
-            $(".footer__subscribe-success-text").shouldHave(text("Данные успешно отправлены. Спасибо!"));
+            $(".footer__subscribe-success-text").shouldHave(text(successMessage));
         });
     }
 }

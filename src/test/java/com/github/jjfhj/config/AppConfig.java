@@ -12,4 +12,7 @@ public interface AppConfig extends Config {
 
     @Key("appURL")
     String appURL();
+
+    @Key("appForBusinessURL")
+    String appForBusinessURL();
 }
