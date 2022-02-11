@@ -35,6 +35,8 @@
 - [x] Отображение пунктов меню в навигационной панели у неавторизованного пользователя
 - [x] Отображение категорий в блоке обзора по категориям на основной странице категории товара
 - [x] Отсутствие ошибок в журнале консоли страницы
+- [x] Email-подписка на получение предложений
+- [x] Скачивание PDF-файла, проверка его свойств и содержимого
 
 [Вернуться к содержанию](#-содержание) :top:
 
@@ -92,7 +94,25 @@ gradle clean ${TASK}
 -Dthreads=${THREADS}
 ```
 
-> :information_source: В файле <code>credentials.properties</code> расположены _логин_ и _пароль_ от удаленного сервера, на котором будут запускаться тесты.
+> <details>
+> <summary> :information_source: Для запуска тестов должны существовать следующие файлы ⇩ </summary>
+>
+> <details>
+> <summary> :point_left: <code>credentials.properties</code> </summary>
+>
+> **В файле должны быть расположены:**
+> + <code>login</code> и <code>password</code> – данные для авторизации на удаленном сервере, на котором будут запускаться тесты
+> </details>
+>
+> <details>
+> <summary> :point_left: <code>app.properties</code> </summary>
+>
+> **В файле должны быть расположены:**
+> + <code>appURL</code> – адрес сервера, который будет использоваться в тестах _MvideoTest_
+> + <code>appForBusinessURL</code> – адрес сервера, который будет использоваться в тестах _MvideoForBusinessTest_
+> </details>
+>
+> </details>
 
 ### :joystick: Параметры сборки
 
@@ -240,6 +260,24 @@ allure serve build/allure-results
 <img title="Allure Custom Dashboard" src="images/screens/allure_custom_dashboard.png">
 </p>
 
+### :jigsaw: Дашборд по типам тестов
+
+<p align="center">
+<img title="Dashboard by Test Types" src="images/screens/dashboard_by_test_types.png">
+</p>
+
+### :jigsaw: Дашборд по стендам
+
+<p align="center">
+<img title="Dashboard by Stands" src="images/screens/dashboard_by_stands.png">
+</p>
+
+### :jigsaw: Дашборд по команде
+
+<p align="center">
+<img title="Dashboard by Team" src="images/screens/dashboard_by_team.png">
+</p>
+
 ### :jigsaw: Запуски тестов
 
 <p align="center">
@@ -256,6 +294,12 @@ allure serve build/allure-results
 
 <p align="center">
 <img title="Allure Test Cases" src="images/screens/allure_testcases.png">
+</p>
+
+### :jigsaw: Обнаруженные дефекты
+
+<p align="center">
+<img title="Allure Defects" src="images/screens/allure_defects.png">
 </p>
 
 [Вернуться к содержанию](#-содержание) :top:
