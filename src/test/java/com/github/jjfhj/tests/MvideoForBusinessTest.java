@@ -42,7 +42,7 @@ public class MvideoForBusinessTest extends TestBase {
     @Story("PDF-файл 'Образец заполнения доверенности'")
     @Severity(SeverityLevel.NORMAL)
     @Link(name = "М.Видео для бизнеса", url = "https://www.mvideo.ru/mvideo-biznes-dokumenty")
-    void test() throws IOException, ParseException {
+    void downloadAndCheckPdfFileTest() throws IOException, ParseException {
         step("Открыть страницу М.Видео с документами для бизнеса", () -> {
             open(APP_FOR_BUSINESS_URL);
         });
