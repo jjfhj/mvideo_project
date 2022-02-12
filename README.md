@@ -71,7 +71,7 @@
 >
 > Автотесты интегрируются с тест-менеджмент системой <code>Allure TestOps</code> и таск-трекер системой <code>Jira</code>.
 >
-> После завершения прогона отправляются уведомления с помощью бота в <code>Telegram</code>.
+> После завершения прогона отправляются уведомления с помощью бота в <code>Telegram</code> и на <code>электронную почту</code>.
 
 [Вернуться к содержанию](#-содержание) :top:
 
@@ -317,10 +317,20 @@ allure serve build/allure-results
 ## <img width="4%" title="Telegram" src="images/logo/Telegram.svg"> Уведомления в Telegram с использованием бота
 
 > После завершения сборки специальный бот, созданный в <code>Telegram</code>, автоматически обрабатывает и отправляет сообщение с отчетом о прогоне.
-> Фреймворк также поддерживает уведомления по _электронной почте, Slack, Skype_ и _Mattermost_.
 
 <p align="center">
 <img title="Telegram Notifications" src="images/screens/telegram_notifications.png">
+</p>
+
+[Вернуться к содержанию](#-содержание) :top:
+
+## <img width="4%" title="Email" src="images/logo/Mail.svg"> Уведомления на электронную почту
+
+> После завершения сборки автоматически отправляется сообщение с отчетом о прогоне на <code>электронную почту</code>.
+> [Фреймворк](https://github.com/qa-guru/allure-notifications) также поддерживает уведомления в _Slack_, _Skype_ и _Mattermost_.
+
+<p align="center">
+<img title="Email Notifications" src="images/screens/email_notifications.png">
 </p>
 
 [Вернуться к содержанию](#-содержание) :top:
