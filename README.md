@@ -22,6 +22,8 @@
 >
 > ➠ [Уведомления в Telegram с использованием бота](#-уведомления-в-telegram-с-использованием-бота)
 >
+> ➠ [Уведомления в Slack](#-уведомления-в-slack)
+>
 > ➠ [Уведомления на электронную почту](#-уведомления-на-электронную-почту)
 >
 > ➠ [Пример запуска теста в Selenoid](#-пример-запуска-теста-в-selenoid)
@@ -55,6 +57,7 @@
 <img width="6%" title="GitHub" src="images/logo/GitHub.svg">
 <img width="6%" title="Jenkins" src="images/logo/Jenkins.svg">
 <img width="6%" title="Allure TestOps" src="images/logo/Allure_TestOps.svg">
+<img width="6%" title="Slack" src="images/logo/Slack.svg">
 <img width="6%" title="Telegram" src="images/logo/Telegram.svg">
 <img width="6%" title="Jira" src="images/logo/Jira.svg">
 </p>
@@ -73,7 +76,7 @@
 >
 > Автотесты интегрируются с тест-менеджмент системой <code>Allure TestOps</code> и таск-трекер системой <code>Jira</code>.
 >
-> После завершения прогона отправляются уведомления с помощью бота в <code>Telegram</code> и на <code>электронную почту</code>.
+> После завершения прогона отправляются уведомления с помощью бота в <code>Telegram</code>, <code>Slack</code> и на <code>электронную почту</code>.
 
 [Вернуться к содержанию](#-содержание) :top:
 
@@ -326,10 +329,20 @@ allure serve build/allure-results
 
 [Вернуться к содержанию](#-содержание) :top:
 
+## <img width="4%" title="Slack" src="images/logo/Slack.svg"> Уведомления в Slack
+
+> После завершения сборки автоматически отправляется сообщение с отчетом о прогоне в <code>Slack</code>.
+
+<p align="center">
+<img title="Slack Notifications" src="images/screens/slack_notifications.png">
+</p>
+
+[Вернуться к содержанию](#-содержание) :top:
+
 ## <img width="4%" title="Email" src="images/logo/Mail.svg"> Уведомления на электронную почту
 
 > После завершения сборки автоматически отправляется сообщение с отчетом о прогоне на <code>электронную почту</code>.
-> [Фреймворк](https://github.com/qa-guru/allure-notifications) также поддерживает уведомления в _Slack_, _Skype_ и _Mattermost_.
+> [Фреймворк](https://github.com/qa-guru/allure-notifications) также поддерживает уведомления в _Skype_ и _Mattermost_.
 
 <p align="center">
 <img title="Email Notifications" width="80%" src="images/screens/email_notifications.png">
