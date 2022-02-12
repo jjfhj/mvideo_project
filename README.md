@@ -332,7 +332,7 @@ allure serve build/allure-results
 > [Фреймворк](https://github.com/qa-guru/allure-notifications) также поддерживает уведомления в _Slack_, _Skype_ и _Mattermost_.
 
 <p align="center">
-<img title="Email Notifications" src="images/screens/email_notifications.png">
+<img title="Email Notifications" width="80%" src="images/screens/email_notifications.png">
 </p>
 
 [Вернуться к содержанию](#-содержание) :top:
