@@ -82,13 +82,15 @@
 
 ## <img width="4%" title="Terminal" src="images/logo/terminal.png"> Запуск тестов из терминала
 
-### :joystick: Локальный запуск тестов
+### :joystick: Локальный запуск тестов с заполненным файлом _app.properties_
 
 ```
 gradle clean ${TASK}
 ```
 
-### :joystick: Удаленный запуск тестов с заполненным файлом _credentials.properties_
+> :information_source: В файле <code>app.properties</code> должны быть расположены _appURL_ и _appForBusinessURL_ – адреса серверов, которые будут использоваться в тестах _MvideoTest_ и _MvideoForBusinessTest_ соответственно.
+
+### :joystick: Удаленный запуск тестов с заполненными файлами _app.properties_  и _credentials.properties_
 
 ```
 gradle clean ${TASK}
@@ -355,7 +357,7 @@ allure serve build/allure-results
 > К каждому тесту в отчете прилагается видео. Одно из таких видео представлено ниже.
 
 <p align="center">
-  <img title="Selenoid Video" src="images/gif/selenoid_video.gif">
+<img title="Selenoid Video" src="images/gif/selenoid_video.gif">
 </p>
 
 [Вернуться к содержанию](#-содержание) :top:
