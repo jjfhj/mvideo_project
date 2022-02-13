@@ -111,16 +111,6 @@ gradle clean ${TASK}
 > + <code>login</code> и <code>password</code> – данные для авторизации на удаленном сервере, на котором будут запускаться тесты
 > </details>
 >
-> [:point_right: <code>app.properties</code>](#joystick-локальный-запуск-тестов-с-заполненным-файлом-appproperties)
->
-> :point_right: <code>app.properties</code> [Параметры](#joystick-локальный-запуск-тестов-с-заполненным-файлом-appproperties)
->
-> <details>
-> <summary> :point_left: <code>app.properties</code> </summary>
->
-> [В файле должны быть расположены следующие параметры](#joystick-локальный-запуск-тестов-с-заполненным-файлом-appproperties)
-> </details>
->
 > <details>
 > <summary> :point_left: <code>app.properties</code> </summary>
 >
