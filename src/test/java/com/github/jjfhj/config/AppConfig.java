@@ -10,9 +10,9 @@ import org.aeonbits.owner.Config;
 })
 public interface AppConfig extends Config {
 
-    @Key("appURL")
+//    @Key("appURL")
     String appURL();
 
-    @Key("appForBusinessURL")
+//    @Key("appForBusinessURL")
     String appForBusinessURL();
 }

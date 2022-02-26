@@ -10,9 +10,9 @@ import org.aeonbits.owner.Config;
 })
 public interface CredentialsConfig extends Config {
 
-    @Key("login")
+//    @Key("login")
     String login();
 
-    @Key("password")
+//    @Key("password")
     String password();
 }
