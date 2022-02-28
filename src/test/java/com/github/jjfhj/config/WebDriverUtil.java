@@ -16,6 +16,7 @@ public class WebDriverUtil {
     private static final String PASSWORD = CREDENTIALS_CONFIG.password();
     private static final String SELENOID_URL = System.getProperty("remoteURL");
     private static final String REMOTE_URL = format("https://%s:%s@%s", LOGIN, PASSWORD, SELENOID_URL);
+    public static final String VIDEO_STORAGE_URL = WEB_DRIVER_CONFIG.videoStorageURL();
     public static final String APP_URL = APP_CONFIG.appURL();
     public static final String APP_FOR_BUSINESS_URL = APP_CONFIG.appForBusinessURL();
 

@@ -6,8 +6,8 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static com.github.jjfhj.config.WebDriverUtil.APP_URL;
-import static com.github.jjfhj.tests.TestData.email;
-import static com.github.jjfhj.tests.TestData.successMessage;
+import static com.github.jjfhj.data.TestData.email;
+import static com.github.jjfhj.data.TestData.successMessage;
 
 public class EmailSubscriptionSteps {
 

@@ -1,4 +1,4 @@
-package com.github.jjfhj.tests;
+package com.github.jjfhj.data;
 
 public enum ProfileMenu {
     ORDER_STATUS("Статус заказа"),
@@ -7,7 +7,7 @@ public enum ProfileMenu {
     FAVORITES("Избранное"),
     CART("Корзина");
 
-    private String profileMenu;
+    private final String profileMenu;
 
     ProfileMenu(String profileMenu) {
         this.profileMenu = profileMenu;

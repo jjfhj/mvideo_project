@@ -1,9 +1,10 @@
 package com.github.jjfhj.tests;
 
-import com.github.jjfhj.JiraIssue;
-import com.github.jjfhj.JiraIssues;
-import com.github.jjfhj.Layer;
-import com.github.jjfhj.Microservice;
+import com.github.jjfhj.annotations.JiraIssue;
+import com.github.jjfhj.annotations.JiraIssues;
+import com.github.jjfhj.annotations.Layer;
+import com.github.jjfhj.annotations.Microservice;
+import com.github.jjfhj.data.ProfileMenu;
 import com.github.jjfhj.helpers.Attach;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
@@ -43,15 +44,12 @@ public class MvideoTest extends TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @Link(name = "М.Видео", url = "https://www.mvideo.ru/")
     void searchResultsTest(String searchQuery) {
-        step("Открыть главную страницу М.Видео", () -> {
-            open(APP_URL);
-        });
-        step("Найти ирригаторы торговой марки B.Well", () -> {
-            $(".input__field").setValue("Ирригатор B.Well").pressEnter();
-        });
-        step("Найти отображение товара " + searchQuery + " в результатах поиска", () -> {
-            $$("div.product-cards-layout--grid").shouldHave(texts(searchQuery));
-        });
+        step("Открыть главную страницу М.Видео", () ->
+                open(APP_URL));
+        step("Найти ирригаторы торговой марки B.Well", () ->
+                $(".input__field").setValue("Ирригатор B.Well").pressEnter());
+        step("Найти отображение товара " + searchQuery + " в результатах поиска", () ->
+                $$("div.product-cards-layout--grid").shouldHave(texts(searchQuery)));
     }
 
     @CsvSource(value = {
@@ -67,15 +65,12 @@ public class MvideoTest extends TestBase {
     @Severity(SeverityLevel.MINOR)
     @Link(name = "М.Видео", url = "https://www.mvideo.ru/")
     void filterCategoryTest(String searchQuery, String categoryName) {
-        step("Открыть главную страницу М.Видео", () -> {
-            open(APP_URL);
-        });
-        step("Найти товар " + searchQuery, () -> {
-            $(".input__field").setValue(searchQuery).pressEnter();
-        });
-        step("Найти отображение категории " + categoryName + " в фильтре 'Категория'", () -> {
-            $(".filter-checkbox-list").shouldHave(text(categoryName));
-        });
+        step("Открыть главную страницу М.Видео", () ->
+                open(APP_URL));
+        step("Найти товар " + searchQuery, () ->
+                $(".input__field").setValue(searchQuery).pressEnter());
+        step("Найти отображение категории " + categoryName + " в фильтре 'Категория'", () ->
+                $(".filter-checkbox-list").shouldHave(text(categoryName)));
     }
 
     @EnumSource(ProfileMenu.class)
@@ -88,15 +83,13 @@ public class MvideoTest extends TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @Link(name = "М.Видео", url = "https://www.mvideo.ru/")
     void displayOfAnonymousMenuItemTest(ProfileMenu profileMenu) {
-        step("Открыть главную страницу М.Видео", () -> {
-            open(APP_URL);
-        });
-        step("Найти отображение пункта меню " + profileMenu + " в навигационной панели", () -> {
-            $(".nav-tabs").shouldHave(text(profileMenu.getProfileMenu()));
-        });
+        step("Открыть главную страницу М.Видео", () ->
+                open(APP_URL));
+        step("Найти отображение пункта меню " + profileMenu + " в навигационной панели", () ->
+                $(".nav-tabs").shouldHave(text(profileMenu.getProfileMenu())));
     }
 
-    @MethodSource("com.github.jjfhj.tests.ReviewsByCategory#productCategories")
+    @MethodSource("com.github.jjfhj.data.TestData#productCategories")
     @DisplayName("Обзор по категориям на основной странице категории товара")
     @Tags({@Tag("Minor"), @Tag("Low")})
     @Microservice("Overview By Category")
@@ -106,18 +99,14 @@ public class MvideoTest extends TestBase {
     @Severity(SeverityLevel.MINOR)
     @Link(name = "М.Видео", url = "https://www.mvideo.ru/")
     void displayOfTheOverviewByCategoryTest(String reviewsByCategory, List<String> productCategories) {
-        step("Открыть главную страницу М.Видео", () -> {
-            open(APP_URL);
-        });
-        step("Открыть каталог товаров", () -> {
-            $("[class='button button--with-icon ng-star-inserted']").click();
-        });
-        step("Перейти в категорию " + reviewsByCategory, () -> {
-            $$(".left-menu__item-text").find(text(reviewsByCategory)).click();
-        });
-        step("Найти отбражение категории " + productCategories + " в обзоре по категориям", () -> {
-            $$("a.c-list-of-links__item").shouldHave(texts(productCategories));
-        });
+        step("Открыть главную страницу М.Видео", () ->
+                open(APP_URL));
+        step("Открыть каталог товаров", () ->
+                $("[class='button button--with-icon ng-star-inserted']").click());
+        step("Перейти в категорию " + reviewsByCategory, () ->
+                $$(".left-menu__item-text").find(text(reviewsByCategory)).click());
+        step("Найти отбражение категории " + productCategories + " в обзоре по категориям", () ->
+                $$("a.c-list-of-links__item").shouldHave(texts(productCategories)));
     }
 
     @Test
@@ -130,9 +119,8 @@ public class MvideoTest extends TestBase {
     @Severity(SeverityLevel.CRITICAL)
     @Link(name = "М.Видео", url = "https://www.mvideo.ru/")
     void consoleShouldNotHaveErrorsTest() {
-        step("Открыть главную страницу М.Видео", () -> {
-            open(APP_URL);
-        });
+        step("Открыть главную страницу М.Видео", () ->
+                open(APP_URL));
         step("Проверить отсутствие текста 'SEVERE' в консоли", () -> {
             String consoleLogs = Attach.browserConsoleLogs();
             String errorText = "SEVERE";

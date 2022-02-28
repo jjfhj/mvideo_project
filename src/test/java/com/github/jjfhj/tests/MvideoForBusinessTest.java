@@ -1,10 +1,10 @@
 package com.github.jjfhj.tests;
 
 import com.codeborne.pdftest.PDF;
-import com.github.jjfhj.JiraIssue;
-import com.github.jjfhj.JiraIssues;
-import com.github.jjfhj.Layer;
-import com.github.jjfhj.Microservice;
+import com.github.jjfhj.annotations.JiraIssue;
+import com.github.jjfhj.annotations.JiraIssues;
+import com.github.jjfhj.annotations.Layer;
+import com.github.jjfhj.annotations.Microservice;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -19,7 +19,7 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static com.github.jjfhj.config.WebDriverUtil.APP_FOR_BUSINESS_URL;
-import static com.github.jjfhj.tests.TestData.pdfName;
+import static com.github.jjfhj.data.TestData.pdfName;
 import static io.qameta.allure.Allure.step;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -43,9 +43,8 @@ public class MvideoForBusinessTest extends TestBase {
     @Severity(SeverityLevel.NORMAL)
     @Link(name = "М.Видео для бизнеса", url = "https://www.mvideo.ru/mvideo-biznes-dokumenty")
     void downloadAndCheckPdfFileTest() throws IOException, ParseException {
-        step("Открыть страницу М.Видео с документами для бизнеса", () -> {
-            open(APP_FOR_BUSINESS_URL);
-        });
+        step("Открыть страницу М.Видео с документами для бизнеса", () ->
+                open(APP_FOR_BUSINESS_URL));
         step("Скачать PDF-файл 'Образец заполнения доверенности', проверить его свойства и содержимое", () -> {
             File pdf = $(byText(pdfName)).download();
             PDF parsedPdf = new PDF(pdf);
